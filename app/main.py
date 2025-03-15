@@ -12,6 +12,9 @@ from jose import JWTError, jwt
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import requests  # for image URL validation
 import uvicorn
+from fastapi.responses import FileResponse
+
+
 
 # Load environment variables
 load_dotenv()
@@ -100,6 +103,10 @@ class FavoriteRecipe(BaseModel):
     ingredients: List[str]
     instructions: str
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the SuperCook API!"}
+
 @app.post("/users/", response_model=dict)
 def create_user(user: User):
     if users_collection.find_one({"email": user.email}):
@@ -178,6 +185,10 @@ def add_favorite_recipe(recipe: FavoriteRecipe, current_user: dict = Depends(get
     # Insert the new recipe into the database
     favorites_collection.insert_one(recipe_dict)
     return {"message": "Recipe added successfully"}
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return FileResponse("path/to/favicon.ico")
 
 @app.get("/get_recipes/", response_model=List[dict])
 def get_user_recipes(title: Optional[str] = None, current_user: dict = Depends(get_current_user)):
