@@ -1,0 +1,7 @@
+__pycache__
+.env
+Food_Images.zip
+Food_Ingredients_and_Recipe_Dataset.zip
+main.py
+youtube_api.py
+LLM/

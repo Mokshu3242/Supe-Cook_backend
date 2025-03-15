@@ -1,0 +1,11 @@
+fastapi
+passlib
+pydantic
+pymongo
+python-dotenv
+python_jose
+Requests
+selenium
+torch
+transformers
+webdriver_manager
