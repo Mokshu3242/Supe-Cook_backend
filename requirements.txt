@@ -6,7 +6,3 @@ pymongo
 python-dotenv
 python_jose
 requests
-selenium
-torch
-transformers
-webdriver_manager
