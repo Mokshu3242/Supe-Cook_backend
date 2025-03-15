@@ -6,3 +6,4 @@ pymongo
 python-dotenv
 python_jose
 requests
+python-multipart
