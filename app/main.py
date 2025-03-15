@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import requests  # for image URL validation
+import uvicorn
 
 # Load environment variables
 load_dotenv()
@@ -199,5 +200,8 @@ def delete_favorite_recipe(title: str, current_user: dict = Depends(get_current_
     # Delete the recipe
     favorites_collection.delete_one({"email": current_user["email"], "name": title})
     return {"message": "Recipe deleted successfully"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 # Run with: uvicorn Api:app --reload
