@@ -1,10 +1,11 @@
 fastapi
+uvicorn
 passlib
 pydantic
 pymongo
 python-dotenv
 python_jose
-Requests
+requests
 selenium
 torch
 transformers
